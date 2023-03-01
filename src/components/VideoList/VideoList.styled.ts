@@ -6,5 +6,5 @@ export const VideoListStyled = styled.div`
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    width: 25vw;
+    width: 32vw;
 `;

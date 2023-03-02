@@ -9,6 +9,7 @@ export const VideoPlayerWrapperStyled = styled.div`
     justify-content: center;
     align-items: flex-start;
     margin: 2rem auto;
+    border: none;
 `;
 
 export const VideoPlayerTitleStyled = styled.h1`
@@ -21,4 +22,5 @@ export const VideoPlayerIframeStyled = styled.iframe`
   width: 60vw;
   height: 70vh;
   margin: 0;
+  border: none;
 `;

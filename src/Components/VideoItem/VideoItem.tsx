@@ -1,4 +1,4 @@
-import VideoInterface from "../../interfaces/VideoInterface";
+import VideoInterface from "../../Interfaces/VideoInterface";
 import {VideoCardStyled, VideoInfoStyled, VideoThumbnailStyled} from "./VideoItem.styled";
 import React from "react";
 

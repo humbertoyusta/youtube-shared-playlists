@@ -1,6 +1,6 @@
 import axios from "axios";
 import useSWR from "swr";
-import VideoInterface from "../interfaces/VideoInterface";
+import VideoInterface from "../Interfaces/VideoInterface";
 
 const fetcher = (url: string) => axios.get(url);
 

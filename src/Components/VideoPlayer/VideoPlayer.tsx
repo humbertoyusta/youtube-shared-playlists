@@ -1,4 +1,4 @@
-import VideoInterface from "../../interfaces/VideoInterface";
+import VideoInterface from "../../Interfaces/VideoInterface";
 import {VideoPlayerIframeStyled, VideoPlayerTitleStyled, VideoPlayerWrapperStyled} from "./VideoPlayer.styled";
 export default function VideoPlayer({ video }: { video: VideoInterface }) {
     return (

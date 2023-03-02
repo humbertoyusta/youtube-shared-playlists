@@ -1,9 +1,13 @@
 import {VideoListStyled} from "./VideoList.styled";
-import useGetVideoList from "../../hooks/useGetVideoList";
-import VideoInterface from "../../interfaces/VideoInterface";
+import useGetVideoList from "../../Hooks/useGetVideoList";
+import VideoInterface from "../../Interfaces/VideoInterface";
 import VideoItem from "../VideoItem";
 
-export default function VideoList ({searchString}: {searchString: string}) {
+export default function VideoList () {
+    // get search string from url
+    const searchString = new URLSearchParams(window.location.search).get("query") || "";
+
+    // get video list
     const {videoList, error, isLoading} = useGetVideoList(searchString);
 
     if (!searchString)
@@ -16,6 +20,7 @@ export default function VideoList ({searchString}: {searchString: string}) {
         console.log(error);
         return <p>Error</p>;
     }
+
     return (
         <VideoListStyled>
             {videoList.map((video: VideoInterface) => (

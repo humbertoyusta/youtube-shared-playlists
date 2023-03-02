@@ -1,12 +1,14 @@
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 import {SearchBarFormStyled, SearchBarInputStyled, SearchBarSubmitStyled} from "./SearchBar.styled";
 
-type Props = {
-    handleSearchSubmit: (search: string) => void,
-}
-
-export default function SearchBar({handleSearchSubmit}: Props) {
+export default function SearchBar() {
     const {register, handleSubmit} = useForm();
+    const navigate = useNavigate();
+
+    function handleSearchSubmit(search: string) {
+        navigate(`/search?query=${encodeURIComponent(search)}`);
+    }
 
     return (
         <SearchBarFormStyled

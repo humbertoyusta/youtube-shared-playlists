@@ -1,13 +1,18 @@
 import {useForm} from "react-hook-form";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {SearchBarFormStyled, SearchBarInputStyled, SearchBarSubmitStyled} from "./SearchBar.styled";
 
 export default function SearchBar() {
     const {register, handleSubmit} = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
 
     function handleSearchSubmit(search: string) {
-        navigate(`/search?query=${encodeURIComponent(search)}`);
+        const navigateTo = {
+            pathname: location.pathname.includes("/video/") ? location.pathname : "/search",
+            search: `?query=${encodeURIComponent(search)}`,
+        };
+        navigate(navigateTo);
     }
 
     return (

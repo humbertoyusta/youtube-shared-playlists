@@ -7,5 +7,5 @@ export const BodyWrapper = styled.div`
     align-items: start;
     align-content: start;
     width: 96vw;
-    margin: auto;
+    padding-top: 50px;
 `;

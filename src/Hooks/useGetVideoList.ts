@@ -22,6 +22,9 @@ export default function useGetVideoList(search: string): useGetVideoListReturnTy
     if (isLoading)
         return {videoList: [], error, isLoading};
 
+    if (data?.data?.status === false)
+        return {videoList: [], error, isLoading};
+
     const videoList = data?.data?.map((video: any) => ({
         id: video.id.videoId,
         title: video.snippet.title,

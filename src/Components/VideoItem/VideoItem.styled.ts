@@ -1,12 +1,15 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
-export const VideoCardStyled = styled.div`
+export const VideoCardStyled = styled(Link)`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    text-decoration: none;
+    color: #000;
     /*height: 100%;*/
     margin: 0.5rem;
     padding: 0.5rem;

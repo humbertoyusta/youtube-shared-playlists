@@ -5,7 +5,7 @@ import VideoItem from "../VideoItem";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 
-export default function VideoList () {
+export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get search string from url params
     const [searchString, setSearchString] = useState<string>("");
     const location = useLocation();
@@ -30,7 +30,7 @@ export default function VideoList () {
     }
 
     return (
-        <VideoListStyled>
+        <VideoListStyled fullWidth={fullWidth}>
             {videoList.map((video: VideoInterface) => (
                 <VideoItem video={video} key={video.id} searchString={searchString} />
             ))}

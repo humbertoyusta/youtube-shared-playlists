@@ -7,10 +7,9 @@ export const VideoCardStyled = styled(Link)`
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 360px; 
     text-decoration: none;
     color: #000;
-    /*height: 100%;*/
     margin: 0.5rem;
     padding: 0.5rem;
     /*border: 1px solid #000;*/

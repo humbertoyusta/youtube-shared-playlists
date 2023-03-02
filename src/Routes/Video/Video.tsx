@@ -23,7 +23,7 @@ export default function Video() {
             {video &&
                 <VideoPlayer video={video} />
             }
-            <VideoList />
+            <VideoList fullWidth={false} />
         </BodyWrapper>
     );
 }

@@ -1,18 +1,13 @@
 import React from 'react';
 import './App.css';
-import SearchBar from "./Components/SearchBar";
 import Header from "./Components/Header";
 import {Outlet} from "react-router-dom";
 
-function App() {
+export default function App() {
     return (
         <>
-            <Header>
-                <SearchBar />
-            </Header>
+            <Header />
             <Outlet />
         </>
     );
 }
-
-export default App;

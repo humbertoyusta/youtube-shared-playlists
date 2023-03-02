@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
+export const HeaderStyled = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

@@ -4,6 +4,7 @@ import VideoInterface from "../../Interfaces/VideoInterface";
 import VideoItem from "../VideoItem";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
+import Loading from "../Loading";
 
 export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get search string from url params
@@ -22,7 +23,11 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
         return (<p>Search for something</p>);
 
     if (isLoading)
-        return <p>Loading...</p>;
+        return (
+            <VideoListStyled fullWidth={fullWidth}>
+                <Loading/>
+            </VideoListStyled>
+        );
 
     if (error) {
         console.log(error);

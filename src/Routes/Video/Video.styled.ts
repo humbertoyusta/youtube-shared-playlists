@@ -8,5 +8,7 @@ export const VideoWrapperStyled = styled.div`
     align-content: flex-start;
     justify-content: space-between;
     width: 96vw;
+    min-height: 80vh;
+    position: relative;
     padding-top: 50px;
 `;

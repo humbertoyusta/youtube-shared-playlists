@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const VideoPlayerWrapperStyled = styled.div`
-    width: 64vw;
+    width: 54vw;
     height: 80vh;
     display: flex;
+    margin-left: 6vw;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
-    margin: 2rem auto;
     border: none;
 `;
 
@@ -19,8 +19,8 @@ export const VideoPlayerTitleStyled = styled.h1`
 `;
 
 export const VideoPlayerIframeStyled = styled.iframe`
-  width: 60vw;
-  height: 70vh;
+  width: 54vw;
+  height: 64vh;
   margin: 0;
   border: none;
 `;

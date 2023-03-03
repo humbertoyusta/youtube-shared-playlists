@@ -8,10 +8,14 @@ export const VideoCardStyled = styled(Link)`
     justify-content: space-between;
     align-items: center;
     width: 360px; 
+    height: 80px;
     text-decoration: none;
     color: #000;
-    margin: 0.5rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     padding: 0.5rem;
+    padding-top: 0;
     /*border: 1px solid #000;*/
     /*border-radius: 0.5rem;*/
     /*background-color: #fff;*/
@@ -19,9 +23,9 @@ export const VideoCardStyled = styled(Link)`
 `;
 
 export const VideoThumbnailStyled = styled.img`
-    width: 50%;
+    width: 40%;
     height: 100%;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
 `;
 
 export const VideoInfoStyled = styled.div`
@@ -30,7 +34,7 @@ export const VideoInfoStyled = styled.div`
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: flex-start;
-    width: 50%;
+    width: 60%;
     height: 100%;
     padding: 0.5rem;
 `;

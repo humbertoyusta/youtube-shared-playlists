@@ -6,6 +6,7 @@ export default function SearchBar() {
     const {register, handleSubmit} = useForm();
     const navigate = useNavigate();
     const location = useLocation();
+    const initialSearch = new URLSearchParams(location.search).get('query') || '';
 
     function handleSearchSubmit(search: string) {
         const navigateTo = {
@@ -22,6 +23,7 @@ export default function SearchBar() {
             <SearchBarInputStyled
                 type="text"
                 placeholder="Search"
+                defaultValue={initialSearch}
                 {...register("search")}
             />
             <SearchBarSubmitStyled type="submit" />

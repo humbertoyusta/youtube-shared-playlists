@@ -1,7 +1,10 @@
 import VideoList from "../../Components/VideoList";
+import {SearchWrapperStyled} from "./Search.styled";
 
 export default function Search() {
     return (
-        <VideoList fullWidth={true} />
+        <SearchWrapperStyled>
+            <VideoList fullWidth={true} />
+        </SearchWrapperStyled>
     );
 }

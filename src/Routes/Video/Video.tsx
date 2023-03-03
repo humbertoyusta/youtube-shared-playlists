@@ -1,8 +1,8 @@
-import BodyWrapper from "../../Components/BodyWrapper";
 import VideoPlayer from "../../Components/VideoPlayer";
 import {useParams} from "react-router-dom";
 import useGetVideo from "../../Hooks/useGetVideo";
 import VideoList from "../../Components/VideoList";
+import {VideoWrapperStyled} from "./Video.styled";
 
 export default function Video() {
     // get video id from url params
@@ -19,11 +19,11 @@ export default function Video() {
     }
 
     return (
-        <BodyWrapper>
+        <VideoWrapperStyled>
             {video &&
                 <VideoPlayer video={video} />
             }
             <VideoList fullWidth={false} />
-        </BodyWrapper>
+        </VideoWrapperStyled>
     );
 }

@@ -5,8 +5,7 @@ export const VideoCardStyled = styled(Link)`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+    align-content: flex-start;
     width: 360px; 
     height: 80px;
     text-decoration: none;
@@ -32,9 +31,23 @@ export const VideoInfoStyled = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items: start;
     width: 60%;
     height: 100%;
-    padding: 0.5rem;
+    margin-left: 1rem;
+`;
+
+export const VideoViewsStyled = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 200;
+  color: #6b6b6b;
+  margin: 0;
+`;
+
+export const VideoTitleStyled = styled.h2`
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    margin: 0;
 `;

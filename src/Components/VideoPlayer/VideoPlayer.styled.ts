@@ -3,20 +3,16 @@ import styled from "styled-components";
 export const VideoPlayerWrapperStyled = styled.div`
     width: 54vw;
     height: 80vh;
-    display: flex;
     margin-left: 6vw;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    /*align-items: flex-start;*/
     position: relative;
     border: none;
 `;
 
 export const VideoPlayerTitleStyled = styled.h1`
   font-size: 1.5em;
-  text-align: center;
   font-family: "Roboto", sans-serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 export const VideoPlayerIframeStyled = styled.iframe`
@@ -24,4 +20,25 @@ export const VideoPlayerIframeStyled = styled.iframe`
   height: 64vh;
   margin: 0;
   border: none;
+`;
+
+export const VideoPlayerDescriptionStyled = styled.p`
+    font-family: "Roboto", sans-serif;  
+    margin-bottom: 10px;
+`;
+
+export const VideoPlayerDivStyled = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 54vw;
+    margin: 0;
+`;
+
+export const VideoPlayerViewsStyled = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  color: #6b6b6b;
+  margin: 0;
 `;

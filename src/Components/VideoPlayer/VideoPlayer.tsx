@@ -1,10 +1,20 @@
-import {VideoPlayerIframeStyled, VideoPlayerTitleStyled, VideoPlayerWrapperStyled} from "./VideoPlayer.styled";
+import {
+    VideoPlayerDescriptionStyled,
+    VideoPlayerDivStyled,
+    VideoPlayerIframeStyled,
+    VideoPlayerTitleStyled, VideoPlayerViewsStyled,
+    VideoPlayerWrapperStyled
+} from "./VideoPlayer.styled";
 import useGetVideo from "../../Hooks/useGetVideo";
 import LoadingAnimation from "../LoadingAnimation";
-import ErrorAnimation from "../ErrorAnimation";
+import ErrorAnimation from "../Animations/ErrorAnimation";
+import parseViews from "../../Utils/parseViews";
+import CopyLinkButton from "../CopyLinkButton";
+import {useLocation} from "react-router-dom";
 
 export default function VideoPlayer({ videoId }: { videoId: string }) {
     const { video, isLoading, error } = useGetVideo(videoId);
+    const location = useLocation();
 
     if (isLoading)
         return (
@@ -22,6 +32,8 @@ export default function VideoPlayer({ videoId }: { videoId: string }) {
         );
     }
 
+    // display views in millions or thousands if applicable
+
     if (video)
         return (
             <VideoPlayerWrapperStyled>
@@ -30,8 +42,13 @@ export default function VideoPlayer({ videoId }: { videoId: string }) {
                     allowFullScreen
                 />
                 <VideoPlayerTitleStyled>{video.title}</VideoPlayerTitleStyled>
+                <VideoPlayerDescriptionStyled>{video.description}</VideoPlayerDescriptionStyled>
+                <VideoPlayerDivStyled>
+                    <VideoPlayerViewsStyled>{parseViews(video.views)} Views</VideoPlayerViewsStyled>
+                    <CopyLinkButton link={window.location.origin + location.pathname} />
+                </VideoPlayerDivStyled>
             </VideoPlayerWrapperStyled>
         );
     else
-        return (<></>);
+        return <></>;
 }

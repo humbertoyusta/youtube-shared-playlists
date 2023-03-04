@@ -5,7 +5,7 @@ import VideoItem from "../VideoItem";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import LoadingAnimation from "../LoadingAnimation";
-import ErrorAnimation from "../ErrorAnimation";
+import ErrorAnimation from "../Animations/ErrorAnimation";
 
 export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get search string from url params

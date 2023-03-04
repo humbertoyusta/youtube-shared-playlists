@@ -9,4 +9,5 @@ export const HeaderStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100vw;
+    z-index: 10;
 `;

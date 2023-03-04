@@ -16,9 +16,14 @@ export const VideoCardStyled = styled(Link)`
     padding: 0.5rem;
     padding-top: 0;
     /*border: 1px solid #000;*/
-    /*border-radius: 0.5rem;*/
+    border-radius: 1rem;
     /*background-color: #fff;*/
     /*box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);*/
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 `;
 
 export const VideoThumbnailStyled = styled.img`
@@ -49,5 +54,10 @@ export const VideoTitleStyled = styled.h2`
     font-size: 1em;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 60px;
+    word-break: break-word;
     margin: 0;
 `;

@@ -23,7 +23,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     if (!searchString)
         return (<p>Search for something</p>);
 
-    if (isLoading || true)
+    if (isLoading)
         return (
             <VideoListStyled fullWidth={fullWidth}>
                 <LoadingAnimation/>

@@ -7,6 +7,7 @@ import {useLocation} from "react-router-dom";
 import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
 import SearchForSomethingAnimation from "../Animations/SearchForSomethingAnimation";
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get search string from url params
@@ -20,6 +21,10 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
 
     // get video list
     const {videoList, error, isLoading} = useGetVideoList(searchString);
+
+    useEffect(() => {
+        videoList.length && window.scrollTo(0, 0);
+    }, [videoList]);
 
     if (!searchString)
         return (
@@ -46,9 +51,18 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
 
     return (
         <VideoListStyled fullWidth={fullWidth}>
-            {videoList.map((video: VideoInterface) => (
-                <VideoItem video={video} key={video.id} searchString={searchString} />
-            ))}
+            <AnimatePresence>
+                {videoList.map((video: VideoInterface, index: number) => (
+                    <motion.div
+                        key={video.id}
+                        initial={{ x: 40, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: index * 0.1, duration: 0.3 }}
+                    >
+                        <VideoItem video={video} key={video.id} searchString={searchString} />
+                    </motion.div>
+                ))}
+            </AnimatePresence>
         </VideoListStyled>
     );
 }

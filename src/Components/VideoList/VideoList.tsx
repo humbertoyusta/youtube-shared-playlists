@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
+import SearchForSomethingAnimation from "../Animations/SearchForSomethingAnimation";
 
 export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get search string from url params
@@ -21,7 +22,11 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     const {videoList, error, isLoading} = useGetVideoList(searchString);
 
     if (!searchString)
-        return (<p>Search for something</p>);
+        return (
+            <VideoListStyled fullWidth={fullWidth}>
+                <SearchForSomethingAnimation />
+            </VideoListStyled>
+        );
 
     if (isLoading)
         return (

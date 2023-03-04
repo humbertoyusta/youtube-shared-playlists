@@ -29,6 +29,8 @@ export default function useGetVideoList(search: string): useGetVideoListReturnTy
         id: video.id.videoId,
         title: video.snippet.title,
         thumbnail: video.snippet?.thumbnails?.url,
+        views: video.views,
+        description: video.description,
     }));
 
     return {videoList, error, isLoading};

@@ -4,7 +4,7 @@ import VideoInterface from "../../Interfaces/VideoInterface";
 import VideoItem from "../VideoItem";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import LoadingAnimation from "../LoadingAnimation";
+import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
 
 export default function VideoList ({fullWidth}: {fullWidth: boolean}) {

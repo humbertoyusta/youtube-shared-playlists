@@ -6,7 +6,7 @@ import {
     VideoPlayerWrapperStyled
 } from "./VideoPlayer.styled";
 import useGetVideo from "../../Hooks/useGetVideo";
-import LoadingAnimation from "../LoadingAnimation";
+import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
 import parseViews from "../../Utils/parseViews";
 import CopyLinkButton from "../CopyLinkButton";

@@ -6,8 +6,9 @@ export const LogoStyled = styled.img<{big: boolean | undefined}>`
     margin: 0 20px;
     cursor: pointer;
     border: none;
+    transition: all 0.3s ease-in-out;
     &:hover {
-        transform: scale(1.1);
+        scale: 1.05;
     }
 `;
 

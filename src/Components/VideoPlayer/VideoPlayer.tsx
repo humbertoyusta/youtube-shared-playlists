@@ -1,20 +1,25 @@
-
 import {VideoPlayerIframeStyled, VideoPlayerTitleStyled, VideoPlayerWrapperStyled} from "./VideoPlayer.styled";
 import useGetVideo from "../../Hooks/useGetVideo";
-import Loading from "../Loading";
+import LoadingAnimation from "../LoadingAnimation";
+import ErrorAnimation from "../ErrorAnimation";
+
 export default function VideoPlayer({ videoId }: { videoId: string }) {
     const { video, isLoading, error } = useGetVideo(videoId);
 
     if (isLoading)
         return (
             <VideoPlayerWrapperStyled>
-                <Loading/>
+                <LoadingAnimation/>
             </VideoPlayerWrapperStyled>
         );
 
     if (error) {
         console.log(error);
-        return <p>Error</p>;
+        return (
+            <VideoPlayerWrapperStyled>
+                <ErrorAnimation/>
+            </VideoPlayerWrapperStyled>
+        );
     }
 
     if (video)

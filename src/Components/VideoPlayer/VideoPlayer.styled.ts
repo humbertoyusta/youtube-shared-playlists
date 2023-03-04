@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const VideoPlayerWrapperStyled = styled.div`
     width: 54vw;
-    height: 80vh;
+    min-height: 80vh;
     margin-left: 6vw;
+    margin-bottom: 6vh;
     position: relative;
     border: none;
 `;
@@ -28,12 +29,13 @@ export const VideoPlayerDescriptionStyled = styled.p`
 `;
 
 export const VideoPlayerDivStyled = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    width: 54vw;
-    margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 54vw;
+  margin: 0;
 `;
 
 export const VideoPlayerViewsStyled = styled.p`

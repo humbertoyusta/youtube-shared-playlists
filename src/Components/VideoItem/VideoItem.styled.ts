@@ -10,15 +10,11 @@ export const VideoCardStyled = styled(Link)`
     height: 80px;
     text-decoration: none;
     color: #000;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
     padding: 0.5rem;
-    padding-top: 0;
-    /*border: 1px solid #000;*/
     border-radius: 1rem;
-    /*background-color: #fff;*/
-    /*box-shadow: 0 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);*/
     transition: all 0.3s ease-in-out;
     &:hover {
         transform: translateY(-2px);

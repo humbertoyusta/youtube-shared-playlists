@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, {StyledComponent} from "styled-components";
+import {motion} from "framer-motion";
 
 export const VideoListStyled = styled.div<{fullWidth: boolean}>`
     display: flex;
@@ -10,3 +11,10 @@ export const VideoListStyled = styled.div<{fullWidth: boolean}>`
     position: relative;
     width: ${props => props.fullWidth ? '96vw' : '32vw'};
 `;
+
+export const VideoItemEnterAnimation: StyledComponent<any, any, {}> =
+    styled(motion.div).attrs(({index}: {index: number}) => ({
+        initial: { x: 40, opacity: 0 },
+        animate: { x: 0, opacity: 1 },
+        transition: { delay: index * 0.1, duration: 0.3 }
+    }))``;

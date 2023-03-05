@@ -1,4 +1,4 @@
-import {VideoListStyled} from "./VideoList.styled";
+import {VideoItemEnterAnimation, VideoListStyled} from "./VideoList.styled";
 import useGetVideoList from "../../Hooks/useGetVideoList";
 import VideoInterface from "../../Interfaces/VideoInterface";
 import VideoItem from "../VideoItem";
@@ -7,13 +7,15 @@ import {useLocation} from "react-router-dom";
 import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
 import SearchForSomethingAnimation from "../Animations/SearchForSomethingAnimation";
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get search string from url params
     const [searchString, setSearchString] = useState<string>("");
+
     const location = useLocation();
 
+    // update search string when url params change
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         setSearchString(searchParams.get("query") || "");
@@ -22,10 +24,12 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // get video list
     const {videoList, error, isLoading} = useGetVideoList(searchString);
 
+    // scroll to top when video list changes
     useEffect(() => {
         videoList.length && window.scrollTo(0, 0);
     }, [videoList]);
 
+    // show search for something animation if search string is empty
     if (!searchString)
         return (
             <VideoListStyled fullWidth={fullWidth}>
@@ -33,6 +37,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
             </VideoListStyled>
         );
 
+    // show loading animation if loading
     if (isLoading)
         return (
             <VideoListStyled fullWidth={fullWidth}>
@@ -40,6 +45,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
             </VideoListStyled>
         );
 
+    // show error animation if error
     if (error) {
         console.log(error);
         return (
@@ -49,18 +55,14 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
         );
     }
 
+    // show video list
     return (
         <VideoListStyled fullWidth={fullWidth}>
             <AnimatePresence>
                 {videoList.map((video: VideoInterface, index: number) => (
-                    <motion.div
-                        key={video.id}
-                        initial={{ x: 40, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ delay: index * 0.1, duration: 0.3 }}
-                    >
+                    <VideoItemEnterAnimation key={video.id} index={index}>
                         <VideoItem video={video} key={video.id} searchString={searchString} />
-                    </motion.div>
+                    </VideoItemEnterAnimation>
                 ))}
             </AnimatePresence>
         </VideoListStyled>

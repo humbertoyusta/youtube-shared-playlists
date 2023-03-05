@@ -32,8 +32,6 @@ export default function VideoPlayer({ videoId }: { videoId: string }) {
         );
     }
 
-    // display views in millions or thousands if applicable
-
     if (video)
         return (
             <VideoPlayerWrapperStyled>

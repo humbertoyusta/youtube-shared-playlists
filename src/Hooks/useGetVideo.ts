@@ -17,6 +17,7 @@ export default function useGetVideo(videoId: string) {
         return {videoList: [], error, isLoading};
 
     const responseData = data?.data;
+
     const video: VideoInterface = {
         id: responseData.videoId,
         title: responseData.title,

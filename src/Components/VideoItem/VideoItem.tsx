@@ -9,7 +9,6 @@ type VideoItemProps = {
 }
 
 export default function VideoItem({video, searchString}: VideoItemProps) {
-    // set query param to url using react-router-dom
     const linkTo = {
         pathname: `/video/${video.id}`,
         search: searchString ? `?query=${searchString}` : ""

@@ -6,7 +6,6 @@ import ScrollToTop from "../../Components/ScrollToTop";
 import React from "react";
 
 export default function Video() {
-    // get video id from url params
     const {videoId} = useParams<{videoId: string}>();
 
     return (

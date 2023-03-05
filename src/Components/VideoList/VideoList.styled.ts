@@ -1,7 +1,7 @@
 import styled, {StyledComponent} from "styled-components";
 import {motion} from "framer-motion";
 
-export const VideoListStyled = styled.div<{fullWidth: boolean}>`
+export const VideoListStyled = styled.div<{columns: number}>`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -9,7 +9,7 @@ export const VideoListStyled = styled.div<{fullWidth: boolean}>`
     align-items: center;
     min-height: 80vh;
     position: relative;
-    width: ${props => props.fullWidth ? '96vw' : '32vw'};
+    width: ${props => props.columns * 32}vw;
 `;
 
 export const VideoItemEnterAnimation: StyledComponent<any, any, {}> =

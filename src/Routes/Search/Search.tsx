@@ -4,7 +4,7 @@ import {SearchWrapperStyled} from "./Search.styled";
 export default function Search() {
     return (
         <SearchWrapperStyled>
-            <VideoList fullWidth={true} />
+            <VideoList columns={3} />
         </SearchWrapperStyled>
     );
 }

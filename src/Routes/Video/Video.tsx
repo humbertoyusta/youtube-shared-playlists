@@ -15,7 +15,7 @@ export default function Video() {
                 {videoId &&
                     <VideoPlayer videoId={videoId} />
                 }
-                <VideoList fullWidth={false} />
+                <VideoList columns={1} />
             </VideoWrapperStyled>
         </>
     );

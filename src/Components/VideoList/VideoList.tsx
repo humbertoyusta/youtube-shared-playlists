@@ -9,7 +9,7 @@ import ErrorAnimation from "../Animations/ErrorAnimation";
 import SearchForSomethingAnimation from "../Animations/SearchForSomethingAnimation";
 import { AnimatePresence } from 'framer-motion';
 
-export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
+export default function VideoList ({columns}: {columns: number}) {
     // get search string from url params
     const [searchString, setSearchString] = useState<string>("");
 
@@ -32,7 +32,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // show search for something animation if search string is empty
     if (!searchString)
         return (
-            <VideoListStyled fullWidth={fullWidth}>
+            <VideoListStyled columns={columns}>
                 <SearchForSomethingAnimation />
             </VideoListStyled>
         );
@@ -40,7 +40,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     // show loading animation if loading
     if (isLoading)
         return (
-            <VideoListStyled fullWidth={fullWidth}>
+            <VideoListStyled columns={columns}>
                 <LoadingAnimation/>
             </VideoListStyled>
         );
@@ -49,7 +49,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
     if (error) {
         console.log(error);
         return (
-            <VideoListStyled fullWidth={fullWidth}>
+            <VideoListStyled columns={columns}>
                 <ErrorAnimation />
             </VideoListStyled>
         );
@@ -57,7 +57,7 @@ export default function VideoList ({fullWidth}: {fullWidth: boolean}) {
 
     // show video list
     return (
-        <VideoListStyled fullWidth={fullWidth}>
+        <VideoListStyled columns={columns}>
             <AnimatePresence>
                 {videoList.map((video: VideoInterface, index: number) => (
                     <VideoItemEnterAnimation key={video.id} index={index}>

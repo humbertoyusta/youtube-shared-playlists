@@ -1,7 +1,11 @@
 import {useForm} from "react-hook-form";
 import {useLocation, useNavigate} from "react-router-dom";
-import {SearchBarFormStyled, SearchBarInputStyled, SearchBarSubmitStyled} from "./SearchBar.styled";
-import {motion} from "framer-motion";
+import {
+    SearchBarFormStyled,
+    SearchBarInputStyled,
+    SearchBarMotionAnimation,
+    SearchBarSubmitStyled
+} from "./SearchBar.styled";
 
 export default function SearchBar({delay = 0}: {delay?: number}) {
     const {register, handleSubmit} = useForm();
@@ -18,17 +22,7 @@ export default function SearchBar({delay = 0}: {delay?: number}) {
     }
 
     return (
-        <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-                type: "easeInOut",
-                stiffness: 260,
-                damping: 20,
-                delay: delay,
-                duration: 0.4,
-            }}
-        >
+        <SearchBarMotionAnimation delay={delay}>
             <SearchBarFormStyled
                 onSubmit={handleSubmit((event) => handleSearchSubmit(event.search))}
             >
@@ -40,6 +34,6 @@ export default function SearchBar({delay = 0}: {delay?: number}) {
                 />
                 <SearchBarSubmitStyled type="submit" />
             </SearchBarFormStyled>
-        </motion.div>
+        </SearchBarMotionAnimation>
     );
 }

@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, {StyledComponent} from "styled-components";
+import {motion} from "framer-motion";
 
 export const SearchBarFormStyled = styled.form`
     display: flex;
@@ -41,3 +42,16 @@ export const SearchBarSubmitStyled = styled.button`
   width: 64px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 `;
+
+export const SearchBarMotionAnimation: StyledComponent<any, any, {}> = styled(motion.div)
+    .attrs(({delay}: {delay: number}) => ({
+        initial: { opacity: 0, x: 60 },
+        animate: { opacity: 1, x: 0 },
+        transition: {
+            type: "easeInOut",
+            stiffness: 260,
+            damping: 20,
+            delay: delay,
+            duration: 0.4,
+        }
+    }))``;

@@ -2,6 +2,9 @@ import Header from "../../Components/Header";
 import {BodyWrapper} from "./Layout.styled";
 import {Outlet, useLocation} from "react-router-dom";
 import React from "react";
+import {QueryClient, QueryClientProvider} from "react-query";
+
+const queryClient = new QueryClient();
 
 export default function Layout() {
     const location = useLocation();
@@ -9,13 +12,13 @@ export default function Layout() {
     let withHeader = (location.pathname !== "/");
 
     return (
-        <>
+        <QueryClientProvider client={queryClient}>
             {withHeader &&
-                <Header />
+                <Header/>
             }
             <BodyWrapper>
-                <Outlet />
+                <Outlet/>
             </BodyWrapper>
-        </>
+        </QueryClientProvider>
     );
 };

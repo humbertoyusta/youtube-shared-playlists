@@ -52,6 +52,6 @@ export const SearchBarMotionAnimation: StyledComponent<any, any, {}> = styled(mo
             stiffness: 260,
             damping: 20,
             delay: delay,
-            duration: 0.4,
+            duration: 0.3,
         }
     }))``;

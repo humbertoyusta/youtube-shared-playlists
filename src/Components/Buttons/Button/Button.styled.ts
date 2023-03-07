@@ -1,7 +1,7 @@
 import styled, {StyledComponent} from "styled-components";
 import {motion} from "framer-motion";
 
-export const CreatePlaylistButtonStyled = styled.button`
+export const ButtonStyled = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -25,11 +25,11 @@ export const CreatePlaylistButtonStyled = styled.button`
   }
 `;
 
-export const CreatePlaylistTextStyled = styled.span`
+export const ButtonTextStyled = styled.span`
   margin-left: 6px;
 `;
 
-export const CreatePlaylistMotionAnimation: StyledComponent<any, any, {}> = styled(motion.div)
+export const ButtonMotionAnimation: StyledComponent<any, any, {}> = styled(motion.div)
     .attrs(({delay}: { delay: number }) => ({
         initial: {opacity: 0, x: 30},
         animate: {opacity: 1, x: 0},

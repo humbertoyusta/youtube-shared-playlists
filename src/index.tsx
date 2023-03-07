@@ -2,24 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Search from "./Routes/Search";
 import Video from "./Routes/Video";
 import Layout from "./Routes/Layout";
 import Welcome from "./Routes/Welcome";
+import EditPlaylist from "./Routes/EditPlaylist";
+import PlayPlaylist from "./Routes/PlayPlaylist";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-      <BrowserRouter>
-          <Routes>
-              <Route path={"/"} element={<Layout />}>
-                  <Route path={"/"} element={<Welcome />} />
-                  <Route path={"/search"} element={<Search />} />
-                  <Route path={"/video/:videoId"} element={<Video />} />
-              </Route>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path={"/"} element={<Layout/>}>
+                    <Route path={"/"} element={<Welcome/>}/>
+                    <Route path={"/search"} element={<Search/>}/>
+                    <Route path={"/video/:videoId"} element={<Video/>}/>
+                    <Route path={"/playlists/:playlistId/edit"} element={<EditPlaylist/>}/>
+                    <Route path={"/playlists/:playlistId/play"} element={<PlayPlaylist/>}/>
+                </Route>
           </Routes>
       </BrowserRouter>
   </React.StrictMode>

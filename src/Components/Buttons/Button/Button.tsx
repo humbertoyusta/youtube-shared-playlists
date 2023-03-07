@@ -1,21 +1,22 @@
 import {ButtonMotionAnimation, ButtonStyled, ButtonTextStyled,} from "./Button.styled";
+import React from "react";
 
-type CreatePlaylistButtonProps = {
+type ButtonProps = {
     text: string;
-    onClick: () => void;
-    animated?: boolean,
+    animated?: boolean;
     delay?: number;
 }
 
-export default function Button({text, onClick, animated = false, delay = 0}: CreatePlaylistButtonProps) {
+export default function Button({text, animated = false, delay = 0, ...rest}:
+                                   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
     return animated ? (
         <ButtonMotionAnimation delay={delay}>
-            <ButtonStyled onClick={onClick}>
+            <ButtonStyled {...rest}>
                 <ButtonTextStyled>{text}</ButtonTextStyled>
             </ButtonStyled>
         </ButtonMotionAnimation>
     ) : (
-        <ButtonStyled onClick={onClick}>
+        <ButtonStyled {...rest}>
             <ButtonTextStyled>{text}</ButtonTextStyled>
         </ButtonStyled>
     );

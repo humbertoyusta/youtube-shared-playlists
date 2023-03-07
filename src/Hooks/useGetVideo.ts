@@ -22,8 +22,6 @@ export default function useGetVideo(videoId: string) {
         id: responseData.videoId,
         title: responseData.title,
         thumbnail: responseData.thumbnailUrl,
-        description: responseData.description,
-        views: responseData.views,
     };
 
     return {video, error, isLoading};

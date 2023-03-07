@@ -1,7 +1,6 @@
 import VideoInterface from "../../Interfaces/VideoInterface";
-import {VideoCardStyled, VideoInfoStyled, VideoThumbnailStyled, VideoTitleStyled, VideoViewsStyled} from "./VideoItem.styled";
+import {VideoCardStyled, VideoInfoStyled, VideoThumbnailStyled, VideoTitleStyled} from "./VideoItem.styled";
 import React from "react";
-import parseViews from "../../Utils/parseViews";
 
 type VideoItemProps = {
     video: VideoInterface;
@@ -19,7 +18,6 @@ export default function VideoItem({video, searchString}: VideoItemProps) {
             <VideoThumbnailStyled src={video.thumbnail} alt={video.title} />
             <VideoInfoStyled>
                 <VideoTitleStyled>{video.title}</VideoTitleStyled>
-                <VideoViewsStyled>{parseViews(video.views)} Views</VideoViewsStyled>
             </VideoInfoStyled>
         </VideoCardStyled>
     );

@@ -1,5 +1,6 @@
 import VideoInterface from "../../Interfaces/VideoInterface";
 import {
+    ButtonListDivStyled,
     VideoCardNoLinkStyled,
     VideoCardStyled,
     VideoInfoStyled,
@@ -8,7 +9,6 @@ import {
 } from "./VideoItem.styled";
 import React from "react";
 import Button from "../Buttons/Button";
-import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 
 type VideoItemProps = {
     video: VideoInterface;
@@ -40,18 +40,17 @@ export default function VideoItem({
             <VideoThumbnailStyled src={video.thumbnail} alt={video.title}/>
             <VideoInfoStyled>
                 <VideoTitleStyled>{video.title}</VideoTitleStyled>
-                {addToPlaylist && isVideoInPlaylist && !isVideoInPlaylist(video) &&
-                    <Button
-                        text={"Add to playlist"}
-                        onClick={() => addToPlaylist(video)}
-                    />
-                }
-                {removeVideoFromPlaylist &&
-                    <Button text={"Remove"} onClick={() => removeVideoFromPlaylist(video)}/>
-                }
-                {playVideo &&
-                    <ButtonWithIcon key="play" text="Play" onClick={() => playVideo(video.id)}/>
-                }
+                <ButtonListDivStyled>
+                    {addToPlaylist && isVideoInPlaylist && !isVideoInPlaylist(video) &&
+                        <Button key="add" name="add" text="" onClick={() => addToPlaylist(video)}/>
+                    }
+                    {removeVideoFromPlaylist &&
+                        <Button key="remove" name="remove" text="" onClick={() => removeVideoFromPlaylist(video)}/>
+                    }
+                    {playVideo &&
+                        <Button key="play" name="play" text="" onClick={() => playVideo(video.id)}/>
+                    }
+                </ButtonListDivStyled>
             </VideoInfoStyled>
         </>
     );

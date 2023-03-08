@@ -19,14 +19,9 @@ export const VideoPlayerTitleStyled = styled.h1`
 
 export const VideoPlayerIframeStyled = styled(YouTube)`
   width: 54vw;
-  height: 64vh;
+  height: 72vh;
   margin: 0;
   border: none;
-`;
-
-export const VideoPlayerDescriptionStyled = styled.p`
-    font-family: "Roboto", sans-serif;  
-    margin-bottom: 10px;
 `;
 
 export const VideoPlayerDivStyled = styled.div`
@@ -36,12 +31,5 @@ export const VideoPlayerDivStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 54vw;
-  margin: 0;
-`;
-
-export const VideoPlayerViewsStyled = styled.p`
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  color: #6b6b6b;
   margin: 0;
 `;

@@ -81,3 +81,12 @@ export const VideoTitleStyled = styled.h2`
   word-break: break-word;
   margin: 0;
 `;
+
+export const ButtonListDivStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  justify-content: space-between;
+  width: 90%;
+`;

@@ -4,7 +4,7 @@ import {PlaylistButtonListStyled, PlaylistStyled} from "./Playlist.styled";
 import AddSomethingAnimation from "../Animations/AddSomethingAnimation";
 import CopyLinkButton from "../Buttons/CopyLinkButton";
 import {useLocation} from "react-router-dom";
-import ButtonWithIcon from "../Buttons/ButtonWithIcon";
+import Button from "../Buttons/Button";
 
 type PlaylistProps = {
     videos: VideoInterface[];
@@ -28,7 +28,7 @@ export default function Playlist({videos, removeVideoFromPlaylist, shuffleVideos
         <PlaylistStyled>
             <PlaylistButtonListStyled>
                 {shuffleVideos && videos.length >= 2 &&
-                    <ButtonWithIcon key="shuffle" text="Shuffle" onClick={() => shuffleVideos()}/>
+                    <Button key="shuffle" name="shuffle" text="Shuffle" onClick={() => shuffleVideos()}/>
                 }
                 <CopyLinkButton link={window.location.origin + location.pathname}/>
             </PlaylistButtonListStyled>

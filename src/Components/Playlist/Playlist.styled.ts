@@ -13,3 +13,12 @@ export const PlaylistStyled = styled.div`
   margin: 10px;
   padding: 10px;
 `;
+
+export const PlaylistButtonListStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+`;

@@ -9,6 +9,7 @@ import Playlist from "../Playlist";
 import useAddVideoToPlaylist from "../../Hooks/PlaylistApiHooks/useAddVideoToPlaylist";
 import {decodeVideo} from "../../Utils/parseVideo";
 import useUpdatePlaylist from "../../Hooks/PlaylistApiHooks/useUpdatePlaylist";
+import shuffleArray from "../../Utils/shuffleArray";
 
 export default function PlaylistManager({withSearch}: { withSearch?: boolean }) {
     const {playlistId} = useParams<{ playlistId: string }>();
@@ -35,11 +36,19 @@ export default function PlaylistManager({withSearch}: { withSearch?: boolean }) 
         }
     }
 
+    function shuffleVideos() {
+        if (playlistId) {
+            const shuffledVideos: VideoInterface[] = shuffleArray(videos);
+            updatePlaylist.mutate({playlistId, videos: shuffledVideos});
+        }
+    }
+
     return (
         <PlaylistManagerStyled>
             <Playlist
                 videos={videos}
                 removeVideoFromPlaylist={removeVideoFromPlaylist}
+                shuffleVideos={shuffleVideos}
             />
             {withSearch && playlistId &&
                 <VideoList

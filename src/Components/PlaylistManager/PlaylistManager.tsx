@@ -8,11 +8,13 @@ import VideoList from "../VideoList";
 import Playlist from "../Playlist";
 import useAddVideoToPlaylist from "../../Hooks/PlaylistApiHooks/useAddVideoToPlaylist";
 import {decodeVideo} from "../../Utils/parseVideo";
+import useUpdatePlaylist from "../../Hooks/PlaylistApiHooks/useUpdatePlaylist";
 
 export default function PlaylistManager({withSearch}: { withSearch?: boolean }) {
     const {playlistId} = useParams<{ playlistId: string }>();
     const {isLoading, isError, data} = useGetPlaylist(playlistId || "");
     const addVideoToPlaylist = useAddVideoToPlaylist();
+    const updatePlaylist = useUpdatePlaylist();
 
     if (isLoading)
         return <LoadingAnimation/>;
@@ -22,18 +24,30 @@ export default function PlaylistManager({withSearch}: { withSearch?: boolean }) 
 
     const videos: VideoInterface[] = data.videos.map((video: any) => decodeVideo(video)) || [];
 
+    function isVideoInPlaylist(video: VideoInterface) {
+        return videos.some(playlistVideo => playlistVideo.id === video.id);
+    }
+
+    function removeVideoFromPlaylist(video: VideoInterface) {
+        if (playlistId) {
+            videos.splice(videos.indexOf(video), 1);
+            updatePlaylist.mutate({playlistId, videos});
+        }
+    }
+
     return (
         <PlaylistManagerStyled>
-            <Playlist videos={videos}/>
+            <Playlist
+                videos={videos}
+                removeVideoFromPlaylist={removeVideoFromPlaylist}
+            />
             {withSearch && playlistId &&
                 <VideoList
                     columns={2}
-                    playlistVideos={videos}
                     addToPlaylist={(video: VideoInterface) => {
-                        console.log(video);
                         addVideoToPlaylist.mutate({playlistId, video});
-                    }
-                    }
+                    }}
+                    isVideoInPlaylist={isVideoInPlaylist}
                 />
             }
         </PlaylistManagerStyled>

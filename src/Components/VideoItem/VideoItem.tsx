@@ -12,11 +12,18 @@ import Button from "../Buttons/Button";
 type VideoItemProps = {
     video: VideoInterface;
     searchString?: string;
-    playlistVideos?: VideoInterface[];
+    isVideoInPlaylist?: (video: VideoInterface) => boolean;
     addToPlaylist?: (video: VideoInterface) => void;
+    removeVideoFromPlaylist?: (video: VideoInterface) => void;
 }
 
-export default function VideoItem({video, searchString, playlistVideos, addToPlaylist}: VideoItemProps) {
+export default function VideoItem({
+                                      video,
+                                      searchString,
+                                      isVideoInPlaylist,
+                                      addToPlaylist,
+                                      removeVideoFromPlaylist
+                                  }: VideoItemProps) {
     const linkTo = {
         pathname: `/video/${video.id}`,
         search: searchString ? `?query=${searchString}` : ""
@@ -27,17 +34,20 @@ export default function VideoItem({video, searchString, playlistVideos, addToPla
             <VideoThumbnailStyled src={video.thumbnail} alt={video.title}/>
             <VideoInfoStyled>
                 <VideoTitleStyled>{video.title}</VideoTitleStyled>
-                {playlistVideos && addToPlaylist &&
+                {addToPlaylist && isVideoInPlaylist && !isVideoInPlaylist(video) &&
                     <Button
                         text={"Add to playlist"}
                         onClick={() => addToPlaylist(video)}
                     />
                 }
+                {removeVideoFromPlaylist &&
+                    <Button text={"Remove"} onClick={() => removeVideoFromPlaylist(video)}/>
+                }
             </VideoInfoStyled>
         </>
     );
 
-    return addToPlaylist ? (
+    return (addToPlaylist || removeVideoFromPlaylist) ? (
         <VideoCardNoLinkStyled>
             {toRender}
         </VideoCardNoLinkStyled>

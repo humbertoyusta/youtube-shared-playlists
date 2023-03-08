@@ -11,11 +11,11 @@ import {AnimatePresence} from 'framer-motion';
 
 type VideoListProps = {
     columns: number;
-    playlistVideos?: VideoInterface[];
+    isVideoInPlaylist?: (video: VideoInterface) => boolean;
     addToPlaylist?: (video: VideoInterface) => void;
 }
 
-export default function VideoList({columns, playlistVideos, addToPlaylist}: VideoListProps) {
+export default function VideoList({columns, isVideoInPlaylist, addToPlaylist}: VideoListProps) {
     // get search string from url params
     const [searchString, setSearchString] = useState<string>("");
 
@@ -72,7 +72,7 @@ export default function VideoList({columns, playlistVideos, addToPlaylist}: Vide
                             video={video}
                             key={video.id}
                             searchString={searchString}
-                            playlistVideos={playlistVideos}
+                            isVideoInPlaylist={isVideoInPlaylist}
                             addToPlaylist={addToPlaylist}
                         />
                     </VideoItemEnterAnimation>

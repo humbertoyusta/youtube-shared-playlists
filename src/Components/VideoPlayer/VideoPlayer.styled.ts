@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import YouTube from "react-youtube";
 
 export const VideoPlayerWrapperStyled = styled.div`
     width: 54vw;
@@ -16,9 +17,9 @@ export const VideoPlayerTitleStyled = styled.h1`
   margin-top: 10px;
 `;
 
-export const VideoPlayerIframeStyled = styled.iframe`
+export const VideoPlayerIframeStyled = styled(YouTube)`
   width: 54vw;
-  height: 64vh;
+  height: 72vh;
   margin: 0;
   border: none;
 `;

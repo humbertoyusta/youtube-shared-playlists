@@ -88,5 +88,6 @@ export const ButtonListDivStyled = styled.div`
   flex-wrap: nowrap;
   align-content: flex-start;
   justify-content: space-between;
+  margin-top: 5px;
   width: 90%;
 `;

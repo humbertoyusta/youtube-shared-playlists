@@ -41,14 +41,14 @@ export default function VideoItem({
             <VideoInfoStyled>
                 <VideoTitleStyled>{video.title}</VideoTitleStyled>
                 <ButtonListDivStyled>
+                    {playVideo &&
+                        <Button key="play" name="play" text="" onClick={() => playVideo(video.id)}/>
+                    }
                     {addToPlaylist && isVideoInPlaylist && !isVideoInPlaylist(video) &&
                         <Button key="add" name="add" text="" onClick={() => addToPlaylist(video)}/>
                     }
                     {removeVideoFromPlaylist &&
                         <Button key="remove" name="remove" text="" onClick={() => removeVideoFromPlaylist(video)}/>
-                    }
-                    {playVideo &&
-                        <Button key="play" name="play" text="" onClick={() => playVideo(video.id)}/>
                     }
                 </ButtonListDivStyled>
             </VideoInfoStyled>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 import VideoInterface from "../Interfaces/VideoInterface";
+import { YoutubeApiConfig } from "../config";
 
 const fetcher = (url: string) => axios.get(url);
 
@@ -14,7 +15,7 @@ export default function useGetVideoList(
     search: string
 ): useGetVideoListReturnType {
     const { data, error, isLoading } = useSWR(
-        `https://youtube.thorsteinsson.is/api/search?q=${search}`,
+        `${YoutubeApiConfig.baseUrl}/api/search?q=${search}`,
         fetcher
     );
 

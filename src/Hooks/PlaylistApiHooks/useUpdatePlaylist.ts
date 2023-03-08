@@ -2,8 +2,7 @@ import VideoInterface from "../../Interfaces/VideoInterface";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import { encodeVideo } from "../../Utils/parseVideo";
-
-const baseUrl = "https://youtube.thorsteinsson.is";
+import { YoutubeApiConfig } from "../../config";
 
 type mutationFnParametersType = {
     playlistId: string;
@@ -16,10 +15,13 @@ export default function useUpdatePlaylist() {
 
     return useMutation(
         ({ playlistId, playlistName, videos }: mutationFnParametersType) =>
-            axios.put(baseUrl + `/api/playlists/${playlistId}`, {
-                name: playlistName,
-                videos: videos.map((video) => encodeVideo(video)),
-            }),
+            axios.put(
+                YoutubeApiConfig.baseUrl + `/api/playlists/${playlistId}`,
+                {
+                    name: playlistName,
+                    videos: videos.map((video) => encodeVideo(video)),
+                }
+            ),
         {
             onSuccess: () => {
                 queryClient.invalidateQueries("playlist");

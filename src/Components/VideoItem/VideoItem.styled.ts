@@ -2,28 +2,6 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 export const VideoCardStyled = styled(Link)`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: flex-start;
-    width: 360px; 
-    height: 80px;
-    text-decoration: none;
-    color: #000;
-    margin-bottom: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-export const VideoCardNoLinkStyled = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -38,6 +16,29 @@ export const VideoCardNoLinkStyled = styled.div`
   padding: 0.5rem;
   border-radius: 1rem;
   transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+export const VideoCardNoLinkStyled = styled.div<{ is_active?: boolean }>`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  width: 360px;
+  height: 80px;
+  text-decoration: none;
+  color: #000;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+  background-color: ${props => props.is_active ? "#f5f5f5" : "white"};
 
   &:hover {
     transform: translateY(-2px);

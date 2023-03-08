@@ -3,19 +3,19 @@ import VideoItem from "../VideoItem";
 import {PlaylistButtonListStyled, PlaylistStyled} from "./Playlist.styled";
 import AddSomethingAnimation from "../Animations/AddSomethingAnimation";
 import CopyLinkButton from "../Buttons/CopyLinkButton";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import ButtonWithIcon from "../Buttons/ButtonWithIcon";
 
 type PlaylistProps = {
     videos: VideoInterface[];
     removeVideoFromPlaylist?: (video: VideoInterface) => void;
     shuffleVideos?: () => void;
+    playVideo?: (videoId: string) => void;
 }
 
-export default function Playlist({videos, removeVideoFromPlaylist, shuffleVideos}: PlaylistProps) {
+export default function Playlist({videos, removeVideoFromPlaylist, shuffleVideos, playVideo}: PlaylistProps) {
     const location = useLocation();
-    const navigate = useNavigate();
-    const {playlistId} = useParams<{ playlistId: string }>();
+    const currentVideoId = (new URLSearchParams(location.search).get("videoId")) || "";
 
     if (!videos.length)
         return (
@@ -27,7 +27,6 @@ export default function Playlist({videos, removeVideoFromPlaylist, shuffleVideos
     return (
         <PlaylistStyled>
             <PlaylistButtonListStyled>
-                <ButtonWithIcon key="play" text="Play" onClick={() => navigate(`/playlists/${playlistId}/play`)}/>
                 {shuffleVideos && videos.length >= 2 &&
                     <ButtonWithIcon key="shuffle" text="Shuffle" onClick={() => shuffleVideos()}/>
                 }
@@ -38,6 +37,8 @@ export default function Playlist({videos, removeVideoFromPlaylist, shuffleVideos
                     key={video.id}
                     video={video}
                     removeVideoFromPlaylist={removeVideoFromPlaylist}
+                    is_active={video.id === currentVideoId}
+                    playVideo={playVideo}
                 />
             ))}
         </PlaylistStyled>

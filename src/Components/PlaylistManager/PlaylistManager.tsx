@@ -34,9 +34,6 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
 
     const videos: VideoInterface[] = data.videos.map((video: any) => decodeVideo(video)) || [];
 
-    if (withPlayer && !currentVideoId && videos.length)
-        navigate(`${location.pathname}?videoId=${videos[0].id}`, {replace: true});
-
     function isVideoInPlaylist(video: VideoInterface) {
         return videos.some(playlistVideo => playlistVideo.id === video.id);
     }
@@ -65,13 +62,16 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
 
     return (
         <PlaylistManagerStyled>
-            {withPlayer && playlistId &&
+            {withPlayer && playlistId && currentVideoId &&
                 <VideoPlayer videoId={currentVideoId} playNextVideo={playNextVideo}/>
             }
             <Playlist
                 videos={videos}
                 removeVideoFromPlaylist={removeVideoFromPlaylist}
                 shuffleVideos={shuffleVideos}
+                playVideo={(videoId: string) => {
+                    navigate(`${location.pathname.replace('/edit', '/play')}?videoId=${videoId}`, {replace: true});
+                }}
             />
             {withSearch && playlistId &&
                 <VideoList
@@ -85,3 +85,4 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
         </PlaylistManagerStyled>
     );
 }
+

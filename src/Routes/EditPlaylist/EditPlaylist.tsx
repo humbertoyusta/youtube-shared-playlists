@@ -1,7 +1,10 @@
+import PlaylistManager from "../../Components/PlaylistManager";
+import {EditPlaylistWrapperStyled} from "./EditPlaylist.styled";
+
 export default function EditPlaylist() {
     return (
-        <div>
-            EditPlaylist
-        </div>
+        <EditPlaylistWrapperStyled>
+            <PlaylistManager withSearch/>
+        </EditPlaylistWrapperStyled>
     );
 }

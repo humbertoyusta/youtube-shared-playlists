@@ -7,9 +7,15 @@ import {useLocation} from "react-router-dom";
 import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
 import SearchForSomethingAnimation from "../Animations/SearchForSomethingAnimation";
-import { AnimatePresence } from 'framer-motion';
+import {AnimatePresence} from 'framer-motion';
 
-export default function VideoList ({columns}: {columns: number}) {
+type VideoListProps = {
+    columns: number;
+    playlistVideos?: VideoInterface[];
+    addToPlaylist?: (video: VideoInterface) => void;
+}
+
+export default function VideoList({columns, playlistVideos, addToPlaylist}: VideoListProps) {
     // get search string from url params
     const [searchString, setSearchString] = useState<string>("");
 
@@ -30,12 +36,13 @@ export default function VideoList ({columns}: {columns: number}) {
     }, [videoList]);
 
     // show search for something animation if search string is empty
-    if (!searchString)
+    if (!searchString) {
         return (
             <VideoListStyled columns={columns}>
-                <SearchForSomethingAnimation />
+                <SearchForSomethingAnimation/>
             </VideoListStyled>
         );
+    }
 
     // show loading animation if loading
     if (isLoading)
@@ -61,7 +68,13 @@ export default function VideoList ({columns}: {columns: number}) {
             <AnimatePresence>
                 {videoList.map((video: VideoInterface, index: number) => (
                     <VideoItemEnterAnimation key={video.id} index={index}>
-                        <VideoItem video={video} key={video.id} searchString={searchString} />
+                        <VideoItem
+                            video={video}
+                            key={video.id}
+                            searchString={searchString}
+                            playlistVideos={playlistVideos}
+                            addToPlaylist={addToPlaylist}
+                        />
                     </VideoItemEnterAnimation>
                 ))}
             </AnimatePresence>

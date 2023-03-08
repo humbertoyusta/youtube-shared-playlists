@@ -11,26 +11,49 @@ export const VideoCardStyled = styled(Link)`
     text-decoration: none;
     color: #000;
     margin-bottom: 0.5rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 1rem;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+`;
+
+export const VideoCardNoLinkStyled = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  width: 360px;
+  height: 80px;
+  text-decoration: none;
+  color: #000;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export const VideoThumbnailStyled = styled.img`
-    width: 40%;
-    height: 100%;
-    border-radius: 0.75rem;
+  width: 40%;
+  height: 100%;
+  border-radius: 0.75rem;
 `;
 
 export const VideoInfoStyled = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
     flex-wrap: nowrap;
     align-items: start;
     width: 60%;
@@ -47,13 +70,13 @@ export const VideoViewsStyled = styled.p`
 `;
 
 export const VideoTitleStyled = styled.h2`
-    font-size: 1em;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    text-overflow: ellipsis;
-    overflow-wrap: break-word;
-    overflow: hidden;
-    height: 60px;
-    word-break: break-word;
-    margin: 0;
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  height: 40px;
+  word-break: break-word;
+  margin: 0;
 `;

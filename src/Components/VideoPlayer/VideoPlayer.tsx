@@ -38,13 +38,10 @@ export default function VideoPlayer({videoId, playNextVideo}: VideoPlayerProps) 
         return (
             <VideoPlayerWrapperStyled>
                 <VideoPlayerIframeStyled
-                    videoId={video.id}
-                    onEnd={playNextVideo ? () => playNextVideo() : () => {
-                    }}
-                    opts={{
-                        playerVars: {
-                            autoplay: true,
-                        },
+                    url={`https://www.youtube.com/embed/${video.id}`}
+                    playing={true}
+                    controls={true}
+                    onEnded={playNextVideo ? () => playNextVideo() : () => {
                     }}
                 />
                 <VideoPlayerTitleStyled>{video.title}</VideoPlayerTitleStyled>

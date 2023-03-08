@@ -11,6 +11,7 @@ import {decodeVideo} from "../../Utils/parseVideo";
 import useUpdatePlaylist from "../../Hooks/PlaylistApiHooks/useUpdatePlaylist";
 import shuffleArray from "../../Utils/shuffleArray";
 import VideoPlayer from "../VideoPlayer";
+import {useEffect, useState} from "react";
 
 type PlaylistManagerProps = {
     withSearch?: boolean;
@@ -21,10 +22,18 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
     const location = useLocation();
     const navigate = useNavigate();
     const {playlistId} = useParams<{ playlistId: string }>();
-    const currentVideoId = (new URLSearchParams(location.search).get("videoId")) || "";
+    const [currentVideoId, setCurrentVideoId] = useState("");
     const {isLoading, isError, data} = useGetPlaylist(playlistId || "");
     const addVideoToPlaylist = useAddVideoToPlaylist();
     const updatePlaylist = useUpdatePlaylist();
+
+    useEffect(() => {
+        if (location.search) {
+            const urlParams = new URLSearchParams(location.search);
+            const videoId = urlParams.get('videoId') || "";
+            setCurrentVideoId(videoId);
+        }
+    }, [location]);
 
     if (isLoading)
         return <LoadingAnimation/>;
@@ -33,6 +42,7 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
         return <ErrorAnimation/>;
 
     const videos: VideoInterface[] = data.videos.map((video: any) => decodeVideo(video)) || [];
+    const playlistName: string = data.name;
 
     function isVideoInPlaylist(video: VideoInterface) {
         return videos.some(playlistVideo => playlistVideo.id === video.id);
@@ -41,14 +51,14 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
     function removeVideoFromPlaylist(video: VideoInterface) {
         if (playlistId) {
             videos.splice(videos.indexOf(video), 1);
-            updatePlaylist.mutate({playlistId, videos});
+            updatePlaylist.mutate({playlistId, playlistName, videos});
         }
     }
 
     function shuffleVideos() {
         if (playlistId) {
             const shuffledVideos: VideoInterface[] = shuffleArray(videos);
-            updatePlaylist.mutate({playlistId, videos: shuffledVideos});
+            updatePlaylist.mutate({playlistId, playlistName, videos: shuffledVideos});
         }
     }
 
@@ -66,6 +76,7 @@ export default function PlaylistManager({withSearch, withPlayer}: PlaylistManage
                 <VideoPlayer videoId={currentVideoId} playNextVideo={playNextVideo}/>
             }
             <Playlist
+                name={playlistName}
                 videos={videos}
                 removeVideoFromPlaylist={removeVideoFromPlaylist}
                 shuffleVideos={shuffleVideos}

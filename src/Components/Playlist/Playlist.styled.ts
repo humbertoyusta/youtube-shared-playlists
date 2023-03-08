@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const PlaylistWrapperStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+`;
+
 export const PlaylistStyled = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,4 +28,12 @@ export const PlaylistButtonListStyled = styled.div`
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
+`;
+
+export const PlaylistTitleStyled = styled.h1`
+  font-size: 1.2em;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  text-align: center;
 `;

@@ -10,8 +10,13 @@ import ErrorAnimation from "../Animations/ErrorAnimation";
 import CopyLinkButton from "../Buttons/CopyLinkButton";
 import {useLocation} from "react-router-dom";
 
-export default function VideoPlayer({ videoId }: { videoId: string }) {
-    const { video, isLoading, error } = useGetVideo(videoId);
+type VideoPlayerProps = {
+    videoId: string;
+    playNextVideo?: () => void;
+}
+
+export default function VideoPlayer({videoId, playNextVideo}: VideoPlayerProps) {
+    const {video, isLoading, error} = useGetVideo(videoId);
     const location = useLocation();
 
     if (isLoading)
@@ -22,7 +27,6 @@ export default function VideoPlayer({ videoId }: { videoId: string }) {
         );
 
     if (error) {
-        console.log(error);
         return (
             <VideoPlayerWrapperStyled>
                 <ErrorAnimation/>
@@ -34,8 +38,14 @@ export default function VideoPlayer({ videoId }: { videoId: string }) {
         return (
             <VideoPlayerWrapperStyled>
                 <VideoPlayerIframeStyled
-                    src={`https://www.youtube.com/embed/${video.id}`}
-                    allowFullScreen
+                    videoId={video.id}
+                    onEnd={playNextVideo ? () => playNextVideo() : () => {
+                    }}
+                    opts={{
+                        playerVars: {
+                            autoplay: true,
+                        },
+                    }}
                 />
                 <VideoPlayerTitleStyled>{video.title}</VideoPlayerTitleStyled>
                 <VideoPlayerDivStyled>

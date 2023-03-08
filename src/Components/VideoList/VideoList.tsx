@@ -1,21 +1,25 @@
-import {VideoItemEnterAnimation, VideoListStyled} from "./VideoList.styled";
+import { VideoItemEnterAnimation, VideoListStyled } from "./VideoList.styled";
 import useGetVideoList from "../../Hooks/useGetVideoList";
 import VideoInterface from "../../Interfaces/VideoInterface";
 import VideoItem from "../VideoItem";
-import {useEffect, useState} from "react";
-import {useLocation} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import LoadingAnimation from "../Animations/LoadingAnimation";
 import ErrorAnimation from "../Animations/ErrorAnimation";
 import SearchForSomethingAnimation from "../Animations/SearchForSomethingAnimation";
-import {AnimatePresence} from 'framer-motion';
+import { AnimatePresence } from "framer-motion";
 
 type VideoListProps = {
     columns: number;
     isVideoInPlaylist?: (video: VideoInterface) => boolean;
     addToPlaylist?: (video: VideoInterface) => void;
-}
+};
 
-export default function VideoList({columns, isVideoInPlaylist, addToPlaylist}: VideoListProps) {
+export default function VideoList({
+    columns,
+    isVideoInPlaylist,
+    addToPlaylist,
+}: VideoListProps) {
     // get search string from url params
     const [searchString, setSearchString] = useState<string>("");
 
@@ -28,7 +32,7 @@ export default function VideoList({columns, isVideoInPlaylist, addToPlaylist}: V
     }, [location.search]);
 
     // get video list
-    const {videoList, error, isLoading} = useGetVideoList(searchString);
+    const { videoList, error, isLoading } = useGetVideoList(searchString);
 
     // scroll to top when video list changes
     useEffect(() => {
@@ -39,7 +43,7 @@ export default function VideoList({columns, isVideoInPlaylist, addToPlaylist}: V
     if (!searchString) {
         return (
             <VideoListStyled columns={columns}>
-                <SearchForSomethingAnimation/>
+                <SearchForSomethingAnimation />
             </VideoListStyled>
         );
     }
@@ -48,7 +52,7 @@ export default function VideoList({columns, isVideoInPlaylist, addToPlaylist}: V
     if (isLoading)
         return (
             <VideoListStyled columns={columns}>
-                <LoadingAnimation/>
+                <LoadingAnimation />
             </VideoListStyled>
         );
 

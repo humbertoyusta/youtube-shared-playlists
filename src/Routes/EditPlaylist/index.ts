@@ -1,3 +1,3 @@
-import EditPlaylist from './EditPlaylist';
+import EditPlaylist from "./EditPlaylist";
 
 export default EditPlaylist;

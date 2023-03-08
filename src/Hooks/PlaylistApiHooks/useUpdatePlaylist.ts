@@ -1,28 +1,29 @@
 import VideoInterface from "../../Interfaces/VideoInterface";
-import {useMutation, useQueryClient} from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
-import {encodeVideo} from "../../Utils/parseVideo";
+import { encodeVideo } from "../../Utils/parseVideo";
 
-const baseUrl = 'https://youtube.thorsteinsson.is';
+const baseUrl = "https://youtube.thorsteinsson.is";
 
 type mutationFnParametersType = {
-    playlistId: string,
-    playlistName: string,
-    videos: VideoInterface[]
-}
+    playlistId: string;
+    playlistName: string;
+    videos: VideoInterface[];
+};
 
 export default function useUpdatePlaylist() {
     const queryClient = useQueryClient();
 
     return useMutation(
-        ({playlistId, playlistName, videos}: mutationFnParametersType) =>
+        ({ playlistId, playlistName, videos }: mutationFnParametersType) =>
             axios.put(baseUrl + `/api/playlists/${playlistId}`, {
                 name: playlistName,
-                videos: videos.map(video => encodeVideo(video)),
-            }), {
+                videos: videos.map((video) => encodeVideo(video)),
+            }),
+        {
             onSuccess: () => {
-                queryClient.invalidateQueries('playlist');
-            }
+                queryClient.invalidateQueries("playlist");
+            },
         }
     );
 }

@@ -1,3 +1,3 @@
-import AddSomethingAnimation from './AddSomethingAnimation';
+import AddSomethingAnimation from "./AddSomethingAnimation";
 
 export default AddSomethingAnimation;

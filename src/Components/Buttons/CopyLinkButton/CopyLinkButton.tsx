@@ -1,8 +1,11 @@
-import {CopyLinkButtonStyled, CopyLinkTextStyled} from "./CopyLinkButton.styled";
-import {useState} from "react";
-import {ReactComponent as CopyLinkIcon} from "./copy.svg";
+import {
+    CopyLinkButtonStyled,
+    CopyLinkTextStyled,
+} from "./CopyLinkButton.styled";
+import { useState } from "react";
+import { ReactComponent as CopyLinkIcon } from "./copy.svg";
 
-export default function CopyLinkButton ({link}: {link: string}) {
+export default function CopyLinkButton({ link }: { link: string }) {
     const [isCopied, setIsCopied] = useState(false);
 
     function handleCopy() {
@@ -14,7 +17,9 @@ export default function CopyLinkButton ({link}: {link: string}) {
     return (
         <CopyLinkButtonStyled onClick={handleCopy}>
             <CopyLinkIcon />
-            <CopyLinkTextStyled>{isCopied ? "Copied!" : "Copy Link"}</CopyLinkTextStyled>
+            <CopyLinkTextStyled>
+                {isCopied ? "Copied!" : "Copy Link"}
+            </CopyLinkTextStyled>
         </CopyLinkButtonStyled>
     );
 }

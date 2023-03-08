@@ -1,3 +1,3 @@
-import PlaylistManager from './PlaylistManager';
+import PlaylistManager from "./PlaylistManager";
 
 export default PlaylistManager;

@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
-export const LogoStyled = styled.img<{big: boolean | undefined}>`
-    width: ${props => props.big ? "320px" : "130px"};
-    height: ${props => props.big ? "130px" : "50px"};
+export const LogoStyled = styled.img<{ big: boolean | undefined }>`
+    width: ${(props) => (props.big ? "320px" : "130px")};
+    height: ${(props) => (props.big ? "130px" : "50px")};
     margin: 0 20px;
     cursor: pointer;
     border: none;
     transition: all 0.3s ease-in-out;
+
     &:hover {
         scale: 1.05;
     }

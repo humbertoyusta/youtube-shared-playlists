@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import animationData from "./SearchForSomethingAnimation.flottie.json";
 import { SearchForSomethingAnimationStyled } from "./SearchForSomethingAnimation.styled";
@@ -9,10 +9,10 @@ export default function SearchForSomethingAnimation() {
     useEffect(() => {
         const animation = lottie.loadAnimation({
             container: container.current,
-            renderer: 'svg',
+            renderer: "svg",
             loop: true,
             autoplay: true,
-            animationData: animationData
+            animationData: animationData,
         });
 
         return () => animation.destroy();

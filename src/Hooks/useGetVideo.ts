@@ -7,14 +7,12 @@ const fetcher = (url: string) => axios.get(url);
 export default function useGetVideo(videoId: string) {
     const { data, error, isLoading } = useSWR(
         `https://youtube.thorsteinsson.is/api/videos/${videoId}`,
-        fetcher,
+        fetcher
     );
 
-    if (error)
-        return {videoList: [], error, isLoading};
+    if (error) return { videoList: [], error, isLoading };
 
-    if (isLoading)
-        return {videoList: [], error, isLoading};
+    if (isLoading) return { videoList: [], error, isLoading };
 
     const responseData = data?.data;
 
@@ -24,5 +22,5 @@ export default function useGetVideo(videoId: string) {
         thumbnail: responseData.thumbnailUrl,
     };
 
-    return {video, error, isLoading};
+    return { video, error, isLoading };
 }

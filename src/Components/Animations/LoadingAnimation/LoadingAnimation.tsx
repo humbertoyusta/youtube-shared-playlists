@@ -1,6 +1,6 @@
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
-import {LoadingAnimationStyled} from "./LoadingAnimation.styled";
+import { LoadingAnimationStyled } from "./LoadingAnimation.styled";
 import animationData from "./LoadingAnimation.flottie.json";
 
 export default function LoadingAnimation() {
@@ -9,10 +9,10 @@ export default function LoadingAnimation() {
     useEffect(() => {
         const animation = lottie.loadAnimation({
             container: container.current,
-            renderer: 'svg',
+            renderer: "svg",
             loop: true,
             autoplay: true,
-            animationData: animationData
+            animationData: animationData,
         });
 
         return () => animation.destroy();

@@ -5,25 +5,25 @@ import VideoInterface from "../Interfaces/VideoInterface";
 const fetcher = (url: string) => axios.get(url);
 
 type useGetVideoListReturnType = {
-    videoList: VideoInterface[],
-    error: any,
-    isLoading: boolean,
-}
+    videoList: VideoInterface[];
+    error: any;
+    isLoading: boolean;
+};
 
-export default function useGetVideoList(search: string): useGetVideoListReturnType {
+export default function useGetVideoList(
+    search: string
+): useGetVideoListReturnType {
     const { data, error, isLoading } = useSWR(
         `https://youtube.thorsteinsson.is/api/search?q=${search}`,
-        fetcher,
+        fetcher
     );
 
-    if (error)
-        return {videoList: [], error, isLoading};
+    if (error) return { videoList: [], error, isLoading };
 
-    if (isLoading)
-        return {videoList: [], error, isLoading};
+    if (isLoading) return { videoList: [], error, isLoading };
 
     if (data?.data?.status === false)
-        return {videoList: [], error, isLoading};
+        return { videoList: [], error, isLoading };
 
     const videoList = data?.data?.map((video: any) => ({
         id: video.id.videoId,
@@ -31,5 +31,5 @@ export default function useGetVideoList(search: string): useGetVideoListReturnTy
         thumbnail: video.snippet?.thumbnails?.url,
     }));
 
-    return {videoList, error, isLoading};
+    return { videoList, error, isLoading };
 }

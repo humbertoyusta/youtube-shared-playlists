@@ -1,23 +1,23 @@
-import {ModalOverlayStyled, ModalStyled} from "./Modal.styled";
-import {useEffect} from "react";
+import { ModalOverlayStyled, ModalStyled } from "./Modal.styled";
+import { useEffect } from "react";
 
 type ModalProps = {
     children: React.ReactNode;
     onClose: () => void;
-}
+};
 
-export default function Modal({children, onClose}: ModalProps) {
+export default function Modal({ children, onClose }: ModalProps) {
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
+            if (event.key === "Escape") {
                 onClose();
             }
         };
 
-        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            document.removeEventListener('keydown', handleKeyDown);
+            document.removeEventListener("keydown", handleKeyDown);
         };
     }, [onClose]);
 

@@ -1,60 +1,60 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const VideoCardStyled = styled(Link)`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: flex-start;
-  width: 360px;
-  height: 80px;
-  text-decoration: none;
-  color: #000;
-  margin-bottom: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    width: 360px;
+    height: 80px;
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 `;
 
 export const VideoCardNoLinkStyled = styled.div<{ is_active?: boolean }>`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: flex-start;
-  width: 360px;
-  height: 80px;
-  text-decoration: none;
-  color: #000;
-  margin-bottom: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  transition: all 0.3s ease-in-out;
-  background-color: ${props => props.is_active ? "#f5f5f5" : "white"};
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    width: 360px;
+    height: 80px;
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
+    background-color: ${(props) => (props.is_active ? "#f5f5f5" : "white")};
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 `;
 
 export const VideoThumbnailStyled = styled.img`
-  width: 40%;
-  height: 100%;
-  border-radius: 0.75rem;
+    width: 40%;
+    height: 100%;
+    border-radius: 0.75rem;
 `;
 
 export const VideoInfoStyled = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
     align-items: start;
     width: 60%;
@@ -63,31 +63,31 @@ export const VideoInfoStyled = styled.div`
 `;
 
 export const VideoViewsStyled = styled.p`
-  font-family: "Roboto", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 200;
-  color: #6b6b6b;
-  margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 200;
+    color: #6b6b6b;
+    margin: 0;
 `;
 
 export const VideoTitleStyled = styled.h2`
-  font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  text-overflow: ellipsis;
-  overflow-wrap: break-word;
-  overflow: hidden;
-  height: 40px;
-  word-break: break-word;
-  margin: 0;
+    font-size: 1em;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    height: 40px;
+    word-break: break-word;
+    margin: 0;
 `;
 
 export const ButtonListDivStyled = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: flex-start;
-  justify-content: space-between;
-  margin-top: 5px;
-  width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    margin-top: 5px;
+    width: 90%;
 `;

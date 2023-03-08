@@ -1,7 +1,7 @@
-import {useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import animationData from "./AddSomethingAnimation.lottie.json";
-import {AddSomethingAnimationStyled} from "./AddSomethingAnimation.styled";
+import { AddSomethingAnimationStyled } from "./AddSomethingAnimation.styled";
 
 export default function AddSomethingAnimation() {
     const container = useRef<any>(null);
@@ -11,17 +11,17 @@ export default function AddSomethingAnimation() {
         if (container.current && !animation.current) {
             animation.current = lottie.loadAnimation({
                 container: container.current,
-                renderer: 'svg',
+                renderer: "svg",
                 loop: false,
                 autoplay: true,
                 animationData: animationData,
             });
 
-            animation.current.addEventListener('complete', () => {
+            animation.current.addEventListener("complete", () => {
                 animation.current.isPaused = true;
             });
         }
     }, [container, animation]);
 
-    return <AddSomethingAnimationStyled ref={container}/>;
+    return <AddSomethingAnimationStyled ref={container} />;
 }

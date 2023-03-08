@@ -19,7 +19,7 @@ export const VideoPlayerTitleStyled = styled.h1`
 
 export const VideoPlayerIframeStyled = styled(YouTube)`
   width: 54vw;
-  height: 72vh;
+  height: 64vh;
   margin: 0;
   border: none;
 `;

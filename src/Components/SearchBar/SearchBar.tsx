@@ -15,7 +15,8 @@ export default function SearchBar({delay = 0}: {delay?: number}) {
 
     function handleSearchSubmit(search: string) {
         const navigateTo = {
-            pathname: location.pathname.includes("/video/") ? location.pathname : "/search",
+            pathname: location.pathname.includes("/video/") || location.pathname.includes("/playlists/")
+                ? location.pathname : "/search",
             search: `?query=${encodeURIComponent(search)}`,
         };
         navigate(navigateTo);

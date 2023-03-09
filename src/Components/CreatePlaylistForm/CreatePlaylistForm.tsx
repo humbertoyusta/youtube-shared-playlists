@@ -32,7 +32,11 @@ export default function CreatePlaylistForm() {
                 label={"Name"}
                 {...register("name", { required: "Name is required" })}
             />
-            <Button text={"Create Playlist"} type="submit" disabled={false} />
+            <Button
+                text={"Create Playlist"}
+                type="submit"
+                disabled={formState.isSubmitting}
+            />
         </CreatePlaylistFormStyled>
     );
 }

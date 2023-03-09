@@ -50,14 +50,17 @@ export default function VideoPlayer({
     };
 
     useEffect(() => {
+        const roomName = `video-${videoId}`;
+        socket.emit("joinRoom", roomName);
         socket.on("play", handleRemotePlay);
         socket.on("pause", handleRemotePause);
 
         return () => {
             socket.off("play", handleRemotePlay);
             socket.off("pause", handleRemotePause);
+            socket.emit("leaveRoom", roomName);
         };
-    }, []);
+    }, [videoId]);
 
     if (isLoading)
         return (
@@ -83,10 +86,16 @@ export default function VideoPlayer({
                     controls
                     onEnded={playNextVideo ? () => playNextVideo() : () => {}}
                     onPlay={() =>
-                        socket.emit("play", videoRef.current?.getCurrentTime())
+                        socket.emit("play", {
+                            roomName: `video-${videoId}`,
+                            seconds: videoRef.current?.getCurrentTime(),
+                        })
                     }
                     onPause={() =>
-                        socket.emit("pause", videoRef.current?.getCurrentTime())
+                        socket.emit("pause", {
+                            roomName: `video-${videoId}`,
+                            seconds: videoRef.current?.getCurrentTime(),
+                        })
                     }
                     ref={videoRef}
                 />

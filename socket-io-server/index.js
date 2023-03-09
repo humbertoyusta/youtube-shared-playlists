@@ -10,9 +10,17 @@ const io = new Server(3001, {
 const events = ["play", "pause"];
 
 io.on("connection", (socket) => {
+    socket.on("joinRoom", (roomName) => {
+        socket.join(roomName);
+    });
+
+    socket.on("leaveRoom", (roomName) => {
+        socket.leave(roomName);
+    });
+
     for (const event of events) {
-        socket.on(event, (seconds) => {
-            socket.broadcast.emit(event, seconds);
+        socket.on(event, ({ roomName, seconds }) => {
+            socket.to(roomName).emit(event, seconds);
         });
     }
 });

@@ -9,7 +9,6 @@ import Playlist from "../Playlist";
 import useAddVideoToPlaylist from "../../Hooks/PlaylistApiHooks/useAddVideoToPlaylist";
 import { decodeVideo } from "../../Utils/parseVideo";
 import useUpdatePlaylist from "../../Hooks/PlaylistApiHooks/useUpdatePlaylist";
-import shuffleArray from "../../Utils/shuffleArray";
 import VideoPlayer from "../VideoPlayer";
 import { useEffect, useState } from "react";
 
@@ -57,13 +56,12 @@ export default function PlaylistManager({
         }
     }
 
-    function shuffleVideos() {
+    function updateVideos(newVideos: VideoInterface[]) {
         if (playlistId) {
-            const shuffledVideos: VideoInterface[] = shuffleArray(videos);
             updatePlaylist.mutate({
                 playlistId,
                 playlistName,
-                videos: shuffledVideos,
+                videos: newVideos,
             });
         }
     }
@@ -92,7 +90,7 @@ export default function PlaylistManager({
                 name={playlistName}
                 videos={videos}
                 removeVideoFromPlaylist={removeVideoFromPlaylist}
-                shuffleVideos={shuffleVideos}
+                updateVideos={updateVideos}
                 playVideo={(videoId: string) => {
                     navigate(
                         `${location.pathname.replace(

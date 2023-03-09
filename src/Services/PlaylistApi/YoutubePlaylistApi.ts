@@ -1,7 +1,7 @@
 import axios from "axios";
-import { YoutubeApiConfig } from "../config";
-import VideoInterface from "../Interfaces/VideoInterface";
-import { encodeVideo } from "../Utils/parseVideo";
+import { YoutubeApiConfig } from "../../config";
+import VideoInterface from "../../Interfaces/VideoInterface";
+import { encodeVideo } from "../../Utils/parseVideo";
 
 export const createPlaylist = async (name: string) => {
     const playlist = await axios.post(

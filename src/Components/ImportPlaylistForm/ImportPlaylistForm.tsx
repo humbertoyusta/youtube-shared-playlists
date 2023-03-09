@@ -5,12 +5,12 @@ import ErrorAnimation from "../Animations/ErrorAnimation";
 import Input from "../Input";
 import Button from "../Buttons/Button";
 import { ImportPlaylistFormStyled } from "./ImportPlaylistForm.styled";
-import getRealYoutubePlaylist from "../../Services/RealYoutubePlaylistApi";
+import getRealYoutubePlaylist from "../../Services/PlaylistApi/RealYoutubePlaylistApi";
 import VideoInterface from "../../Interfaces/VideoInterface";
 import {
     createPlaylist,
     updatePlaylist,
-} from "../../Services/YoutubePlaylistApi";
+} from "../../Services/PlaylistApi/YoutubePlaylistApi";
 
 export default function ImportPlaylistForm() {
     const { handleSubmit, formState, register } = useForm<{

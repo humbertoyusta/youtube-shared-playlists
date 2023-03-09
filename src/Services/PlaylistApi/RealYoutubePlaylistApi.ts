@@ -1,6 +1,6 @@
 import axios from "axios";
-import { RealYoutubeApiConfig, YoutubeApiConfig } from "../config";
-import VideoInterface from "../Interfaces/VideoInterface";
+import { RealYoutubeApiConfig, YoutubeApiConfig } from "../../config";
+import VideoInterface from "../../Interfaces/VideoInterface";
 
 export default async function getRealYoutubePlaylist(
     playlistId: string

@@ -5,11 +5,13 @@ import {
     PlaylistStyled,
     PlaylistTitleStyled,
     PlaylistWrapperStyled,
+    VideoItemAnimation,
 } from "./Playlist.styled";
 import AddSomethingAnimation from "../Animations/AddSomethingAnimation";
 import CopyLinkButton from "../Buttons/CopyLinkButton";
 import { useLocation } from "react-router-dom";
 import Button from "../Buttons/Button";
+import { AnimatePresence } from "framer-motion";
 
 type PlaylistProps = {
     name: string;
@@ -17,6 +19,7 @@ type PlaylistProps = {
     removeVideoFromPlaylist?: (video: VideoInterface) => void;
     shuffleVideos?: () => void;
     playVideo?: (videoId: string) => void;
+    swapVideos?: (smallerIndex: number) => void;
 };
 
 export default function Playlist({
@@ -25,6 +28,7 @@ export default function Playlist({
     removeVideoFromPlaylist,
     shuffleVideos,
     playVideo,
+    swapVideos,
 }: PlaylistProps) {
     const location = useLocation();
     const currentVideoId =
@@ -59,15 +63,24 @@ export default function Playlist({
                         link={window.location.origin + location.pathname}
                     />
                 </PlaylistButtonListStyled>
-                {videos.map((video) => (
-                    <VideoItem
-                        key={video.id}
-                        video={video}
-                        removeVideoFromPlaylist={removeVideoFromPlaylist}
-                        is_active={video.id === currentVideoId}
-                        playVideo={playVideo}
-                    />
-                ))}
+                <AnimatePresence>
+                    {videos.map((video, index) => (
+                        <VideoItemAnimation key={video.id}>
+                            <VideoItem
+                                key={video.id}
+                                video={video}
+                                removeVideoFromPlaylist={
+                                    removeVideoFromPlaylist
+                                }
+                                is_active={video.id === currentVideoId}
+                                playVideo={playVideo}
+                                swapVideos={swapVideos}
+                                index={index}
+                                playlistLength={videos.length}
+                            />
+                        </VideoItemAnimation>
+                    ))}
+                </AnimatePresence>
             </PlaylistStyled>
         </PlaylistWrapperStyled>
     );

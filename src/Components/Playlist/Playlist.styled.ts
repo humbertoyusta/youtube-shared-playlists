@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { StyledComponent } from "styled-components";
+import { motion } from "framer-motion";
 
 export const PlaylistWrapperStyled = styled.div`
     display: flex;
@@ -37,3 +38,12 @@ export const PlaylistTitleStyled = styled.h1`
     margin-top: 2px;
     text-align: center;
 `;
+
+export const VideoItemAnimation: StyledComponent<any, any, {}> = styled(
+    motion.div
+).attrs(() => ({
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
+    transition: { duration: 0.3 },
+}))``;

@@ -64,9 +64,9 @@ export default function Playlist({
                         text={"Copy Playlist Link"}
                     />
                 </PlaylistButtonListStyled>
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                     {videos.map((video, index) => (
-                        <VideoItemAnimation key={video.id}>
+                        <VideoItemAnimation key={video.id} layout>
                             <VideoItem
                                 key={video.id}
                                 video={video}

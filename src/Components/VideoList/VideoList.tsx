@@ -34,11 +34,6 @@ export default function VideoList({
     // get video list
     const { videoList, error, isLoading } = useGetVideoList(searchString);
 
-    // scroll to top when video list changes
-    useEffect(() => {
-        videoList.length && window.scrollTo(0, 0);
-    }, [videoList]);
-
     // show search for something animation if search string is empty
     if (!searchString) {
         return (

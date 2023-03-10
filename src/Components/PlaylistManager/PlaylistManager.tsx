@@ -12,6 +12,7 @@ import useUpdatePlaylist from "../../Hooks/PlaylistApiHooks/useUpdatePlaylist";
 import shuffleArray from "../../Utils/shuffleArray";
 import VideoPlayer from "../VideoPlayer";
 import { useEffect, useState } from "react";
+import swapElements from "../../Utils/swapElements";
 
 type PlaylistManagerProps = {
     withSearch?: boolean;
@@ -59,11 +60,20 @@ export default function PlaylistManager({
 
     function shuffleVideos() {
         if (playlistId) {
-            const shuffledVideos: VideoInterface[] = shuffleArray(videos);
             updatePlaylist.mutate({
                 playlistId,
                 playlistName,
-                videos: shuffledVideos,
+                videos: shuffleArray(videos),
+            });
+        }
+    }
+
+    function swapVideos(smallerIndex: number) {
+        if (playlistId) {
+            updatePlaylist.mutate({
+                playlistId,
+                playlistName,
+                videos: swapElements(videos, smallerIndex, smallerIndex + 1),
             });
         }
     }
@@ -93,6 +103,7 @@ export default function PlaylistManager({
                 videos={videos}
                 removeVideoFromPlaylist={removeVideoFromPlaylist}
                 shuffleVideos={shuffleVideos}
+                swapVideos={swapVideos}
                 playVideo={(videoId: string) => {
                     navigate(
                         `${location.pathname.replace(

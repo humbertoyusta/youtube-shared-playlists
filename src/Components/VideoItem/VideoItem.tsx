@@ -12,22 +12,28 @@ import Button from "../Buttons/Button";
 
 type VideoItemProps = {
     video: VideoInterface;
+    index?: number;
+    playlistLength?: number;
     searchString?: string;
     is_active?: boolean;
     isVideoInPlaylist?: (video: VideoInterface) => boolean;
     addToPlaylist?: (video: VideoInterface) => void;
     removeVideoFromPlaylist?: (video: VideoInterface) => void;
     playVideo?: (videoId: string) => void;
+    swapVideos?: (smallerIndex: number) => void;
 };
 
 export default function VideoItem({
     video,
+    index,
+    playlistLength,
     searchString,
     is_active = false,
     isVideoInPlaylist,
     addToPlaylist,
     removeVideoFromPlaylist,
     playVideo,
+    swapVideos,
 }: VideoItemProps) {
     const linkTo = {
         pathname: `/video/${video.id}`,
@@ -48,6 +54,25 @@ export default function VideoItem({
                             onClick={() => playVideo(video.id)}
                         />
                     )}
+                    {swapVideos && index !== undefined && index > 0 && (
+                        <Button
+                            key="up"
+                            name="up"
+                            text=""
+                            onClick={() => swapVideos(index - 1)}
+                        />
+                    )}
+                    {swapVideos &&
+                        index !== undefined &&
+                        playlistLength &&
+                        index + 1 < playlistLength && (
+                            <Button
+                                key="down"
+                                name="down"
+                                text=""
+                                onClick={() => swapVideos(index)}
+                            />
+                        )}
                     {addToPlaylist &&
                         isVideoInPlaylist &&
                         !isVideoInPlaylist(video) && (

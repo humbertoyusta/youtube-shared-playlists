@@ -3,6 +3,9 @@ import { ReactComponent as ShuffleIcon } from "./Icons/shuffle.svg";
 import { ReactComponent as PlayIcon } from "./Icons/play.svg";
 import { ReactComponent as RemoveIcon } from "./Icons/remove.svg";
 import { ReactComponent as AddIcon } from "./Icons/add.svg";
+import { ReactComponent as DownArrowIcon } from "./Icons/down-arrow.svg";
+import { ReactComponent as UpArrowIcon } from "./Icons/up-arrow.svg";
+
 import {
     ButtonMotionAnimation,
     ButtonStyled,
@@ -29,6 +32,8 @@ export default function Button({
             {name === "play" && <PlayIcon />}
             {name === "remove" && <RemoveIcon />}
             {name === "add" && <AddIcon />}
+            {name === "down" && <DownArrowIcon />}
+            {name === "up" && <UpArrowIcon />}
             {text && <ButtonTextStyled>{text}</ButtonTextStyled>}
         </ButtonStyled>
     );

@@ -30,6 +30,7 @@ export default function PlaylistManager({
     const { isLoading, isError, data } = useGetPlaylist(playlistId || "");
     const addVideoToPlaylist = useAddVideoToPlaylist();
     const updatePlaylist = useUpdatePlaylist();
+    const [playlistKey, setPlaylistKey] = useState(Math.random());
 
     useEffect(() => {
         if (location.search) {
@@ -38,6 +39,8 @@ export default function PlaylistManager({
             setCurrentVideoId(videoId);
         }
     }, [location]);
+
+    useEffect(() => setPlaylistKey(Math.random()), [location]);
 
     if (isLoading) return <LoadingAnimation />;
 
@@ -99,6 +102,7 @@ export default function PlaylistManager({
                 />
             )}
             <Playlist
+                key={playlistKey}
                 name={playlistName}
                 videos={videos}
                 removeVideoFromPlaylist={removeVideoFromPlaylist}

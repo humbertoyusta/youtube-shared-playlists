@@ -15,6 +15,7 @@ import ReactPlayer from "react-player";
 
 type VideoPlayerProps = {
     videoId: string;
+    playlistId?: string;
     playNextVideo?: () => void;
 };
 
@@ -22,6 +23,7 @@ const socket = io("http://localhost:3001");
 
 export default function VideoPlayer({
     videoId,
+    playlistId,
     playNextVideo,
 }: VideoPlayerProps) {
     const { video, isLoading, error } = useGetVideo(videoId);
@@ -102,7 +104,11 @@ export default function VideoPlayer({
                 <VideoPlayerTitleStyled>{video.title}</VideoPlayerTitleStyled>
                 <VideoPlayerDivStyled>
                     <CopyLinkButton
-                        link={window.location.origin + location.pathname}
+                        link={
+                            playlistId
+                                ? `${window.location.origin}/video/${videoId}`
+                                : window.location.origin + location.pathname
+                        }
                         text={"Copy Video Link"}
                     />
                 </VideoPlayerDivStyled>

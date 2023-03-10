@@ -98,6 +98,7 @@ export default function PlaylistManager({
             {withPlayer && playlistId && currentVideoId && (
                 <VideoPlayer
                     videoId={currentVideoId}
+                    playlistId={playlistId}
                     playNextVideo={playNextVideo}
                 />
             )}

@@ -103,6 +103,7 @@ export default function VideoPlayer({
                 <VideoPlayerDivStyled>
                     <CopyLinkButton
                         link={window.location.origin + location.pathname}
+                        text={"Copy Video Link"}
                     />
                 </VideoPlayerDivStyled>
             </VideoPlayerWrapperStyled>

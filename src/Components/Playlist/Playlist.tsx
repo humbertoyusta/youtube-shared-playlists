@@ -61,6 +61,7 @@ export default function Playlist({
                     )}
                     <CopyLinkButton
                         link={window.location.origin + location.pathname}
+                        text={"Copy Playlist Link"}
                     />
                 </PlaylistButtonListStyled>
                 <AnimatePresence>
